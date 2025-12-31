@@ -38,7 +38,7 @@ def morse(message, choice):
     if choice == 1:
         #encoding block
         #formats the message received from the user
-        formatted_message = message.upper().strip()
+        formatted_message = message.upper().strip() #uppercases the message then strips whitespaces before and after the message
         converted_message = "" #to store the resultant morse translation
         
         #main encoding loop
@@ -55,6 +55,18 @@ def morse(message, choice):
         return converted_message.strip()
     else:
         #decoding block
-        formatted_code = message.strip().split(" / ")
+        formatted_code = message.strip().split(" / ") #strips whitespaces and splits each word wiith / 
         converted_code = "" #final output
         decoded_word = "" #to store each decoded letters 
+        
+        #decoding loop
+        for words in formatted_code:
+            formatted_letters = words.split()
+            for letters in formatted_letters:
+                if letters in morse_dict:
+                    decoded_word += morse_dict[letters]
+            converted_code += decoded_word
+            converted_code += " "
+            decoded_word = "" #this clears and empties the string - mandatory because previous string is still contained here which may combined with the next word
+            
+        return converted_code.strip()
