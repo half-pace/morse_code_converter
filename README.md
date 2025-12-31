@@ -2,6 +2,9 @@
 
 **A basic Morse code translator that allows you to convert text to Morse code and Morse code back to text.**
 
+## Author
+Created by `halfpace`
+
 ## Features
 
 *   **Bidirectional Translation:** Convert plain English text to Morse code and decode Morse code back to text.
@@ -12,6 +15,17 @@
 ## Technologies Used
 
 *   **PYTHON:** Used for the entire translation logic.
+
+## NOTES
+- Letters are separated by spaces in Morse code.
+- Words are separated using /.
+- Input is case-insensitive for text-to-Morse conversion.
+
+### Example
+```sh
+Input:  I AM
+Output: .. / .- --
+```
 
 ## Getting Started
 
