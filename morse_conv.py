@@ -39,4 +39,4 @@ def morse(message, choice):
         #encoding block
         #formats the message received from the user
         formatted_message = message.upper().strip()
-        converted_message = ""
+        
