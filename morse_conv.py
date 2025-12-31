@@ -53,3 +53,8 @@ def morse(message, choice):
                 break
         
         return converted_message.strip()
+    else:
+        #decoding block
+        formatted_code = message.strip().split(" / ")
+        converted_code = "" #final output
+        decoded_word = "" #to store each decoded letters 
