@@ -70,3 +70,26 @@ def morse(message, choice):
             decoded_word = "" #this clears and empties the string - mandatory because previous string is still contained here which may combined with the next word
             
         return converted_code.strip()
+    
+#user input
+while True:
+    print("--------------------------------------- Strict Input Rules ---------------------------------------")
+    print(" For Morse to Text Conversion ")
+    print(" Apply / after every word and apply space after every letter in a word!")
+    print(" Enter type of conversion: 1: Text to morse 2: Morse to text 3: Exit")
+    
+    user_choice = int(input("Enter choice of conversion: "))
+    
+    if user_choice == 1:
+        user_message = input("Enter your message: ")
+        output = morse(user_message, user_choice)
+        print("The morse code is: ", output)
+    elif user_choice == 2:
+        user_message = input("Enter your morse code: ")
+        output = morse(user_message, user_choice)
+        print("The message for the morse code is: ", output)
+    elif user_choice == 3:
+        print("Exiting the program!")
+        break
+    else:
+        print("Invalid choice! Choose between 1-3")
