@@ -79,7 +79,8 @@ def morse(message, choice):
             elif each_word == " ": 
                 converted_message += " / " #if there's space between words we will add / to separate words
             else:
-                print("Invalid Character Used!")
+                print(f"Invalid Character Used: {each_word}")
+                return "Invalid Character"
                 break
         
         return converted_message.strip()
@@ -95,6 +96,10 @@ def morse(message, choice):
             for letters in formatted_letters:
                 if letters in morse_dict:
                     decoded_word += morse_dict[letters]
+                else:
+                    print("Invalid Morse Code!")
+                    return "Invalid Morse"
+                    break
             converted_code += decoded_word
             converted_code += " "
             decoded_word = "" #this clears and empties the string - mandatory because previous string is still contained here which may combined with the next word
@@ -105,19 +110,25 @@ def morse(message, choice):
 while True:
     print("--------------------------------------- Strict Input Rules ---------------------------------------")
     print(" For Morse to Text Conversion ")
-    print(" Apply / after every word and apply space after every letter in a word!")
+    print(" Apply / after every word and apply single space after every letter in a word!")
     print(" Enter type of conversion: 1: Text to morse 2: Morse to text 3: Exit")
+    
+    #need to add auto-detect method instead of asking user
     
     user_choice = int(input("Enter choice of conversion: "))
     
     if user_choice == 1:
         user_message = input("Enter your message: ")
         output = morse(user_message, user_choice)
-        print("The morse code is: ", output)
+        if output != "Invalid Character":
+            print("The morse code is: ", output)
+        else:
+            continue
     elif user_choice == 2:
         user_message = input("Enter your morse code: ")
         output = morse(user_message, user_choice)
-        print("The message for the morse code is: ", output)
+        if output != "Invalid Morse":
+            print("The message for the morse code is: ", output)
     elif user_choice == 3:
         print("Exiting the program!")
         break
