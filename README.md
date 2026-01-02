@@ -16,10 +16,13 @@ Created by `halfpace`
 
 *   **PYTHON:** Used for the entire translation logic.
 
+## Usage
+Encoding (Text -> Morse)
+- Supported Characters: `A-Z`, numbers `(0-9)`, special characters: `. , ? - _ ' " ! / () $ & @ : ; = + ¿ ¡`
+
 ## NOTES
-- Letters are separated by spaces in Morse code.
+- Letters are separated by single space in Morse code.
 - Words are separated using /.
-- Input is case-insensitive for text-to-Morse conversion.
 
 ### Example
 ```sh
