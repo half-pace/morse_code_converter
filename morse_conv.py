@@ -55,7 +55,7 @@ def morse(message, code):
         "+": ".-.-.",
         "-": "-....-",
         "_": "..--.-",
-        "\"\"" : ".-..-.",
+        "\"" : ".-..-.",
         "$": "...-..-",
         "@": ".--.-.",
         "¿": "..-.-",
@@ -115,7 +115,7 @@ while True:
     print(" Would you like to start the program? 1: Start 2: Exit")
     # print(" Enter type of conversion: 1: Text to morse 2: Morse to text 3: Exit")
     
-    #need to add auto-detect method instead of asking user
+    #auto detect done but need better regex checkings
     #add a toggle to either do timing based print or normal print
     #for CLI we auto detect but provide --timed and -help options
     
