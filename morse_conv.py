@@ -1,7 +1,8 @@
 #morse code converter
+import re 
 
 #define the function 
-def morse(message, choice):
+def morse(message, code):
     eng_code = {
         "A": ".-",
         "B": "-...",
@@ -65,7 +66,7 @@ def morse(message, choice):
     morse_dict = {value: key for key, value in eng_code.items()}
     
     #choice based trigger
-    if choice == 1:
+    if code == 1:
         #encoding block
         #formats the message received from the user
         formatted_message = message.upper().strip() #uppercases the message then strips whitespaces before and after the message
@@ -111,26 +112,51 @@ while True:
     print("--------------------------------------- Strict Input Rules ---------------------------------------")
     print(" For Morse to Text Conversion ")
     print(" Apply / after every word and apply single space after every letter in a word!")
-    print(" Enter type of conversion: 1: Text to morse 2: Morse to text 3: Exit")
+    print(" Would you like to start the program? 1: Start 2: Exit")
+    # print(" Enter type of conversion: 1: Text to morse 2: Morse to text 3: Exit")
     
     #need to add auto-detect method instead of asking user
+    #add a toggle to either do timing based print or normal print
+    #for CLI we auto detect but provide --timed and -help options
     
     user_choice = int(input("Enter choice of conversion: "))
     
     if user_choice == 1:
-        user_message = input("Enter your message: ")
-        output = morse(user_message, user_choice)
-        if output != "Invalid Character":
-            print("The morse code is: ", output)
+        user_message =  input("Enter your message/code: ")
+        pattern = re.findall(r"\w+", user_message)
+        
+        if pattern:
+            print("Initializing Text -> Morse!") #detects texts
+            user_code = 1
+            output = morse(user_message, user_code)    
+            if output != "Invalid Character":
+                print("The morse code is: ", output)
         else:
-            continue
+            print("Initializing Morse -> Text") #detects morse
+            user_code = 2
+            output = morse(user_message, user_code)
+            if output != "Invalid Morse":
+                print("The message for the morse code is: ", output)
     elif user_choice == 2:
-        user_message = input("Enter your morse code: ")
-        output = morse(user_message, user_choice)
-        if output != "Invalid Morse":
-            print("The message for the morse code is: ", output)
-    elif user_choice == 3:
         print("Exiting the program!")
         break
-    else:
-        print("Invalid choice! Choose between 1-3")
+    else: 
+        print("Invalid input! Choose between (1-2)")
+    
+    # if user_choice == 1:
+    #     user_message = input("Enter your message: ")
+    #     output = morse(user_message, user_choice)
+    #     if output != "Invalid Character":
+    #         print("The morse code is: ", output)
+    #     else:
+    #         continue
+    # elif user_choice == 2:
+    #     user_message = input("Enter your morse code: ")
+    #     output = morse(user_message, user_choice)
+    #     if output != "Invalid Morse":
+    #         print("The message for the morse code is: ", output)
+    # elif user_choice == 3:
+    #     print("Exiting the program!")
+    #     break
+    # else:
+    #     print("Invalid choice! Choose between 1-3")
